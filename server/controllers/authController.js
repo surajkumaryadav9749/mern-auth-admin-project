@@ -1,7 +1,6 @@
 const User = require("../models/user.model");
-const bcryptjs = require("bcryptjs");
 
-const authRegister = async (req, res) => {
+const authRegister = async (req, res, next) => {
   try {
     //request data
     const { username, email, password } = req.body;
@@ -30,9 +29,7 @@ const authRegister = async (req, res) => {
         .json({ message: "User created successfully", success: true });
     }
   } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Something went wrong", error: error });
+    next(error);
   }
 };
 

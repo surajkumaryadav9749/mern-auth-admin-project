@@ -1,9 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const router = require("./routes/authRoute");
+const authRouter = require("./routes/authRoute");
+const contactRouter = require("./routes/contactRoute");
 const connectDb = require("./config/db");
 const cors = require("cors");
+const errorMiddleware = require("./middlewares/errorMiddleware");
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,12 +17,19 @@ app.use(
     credentials: true,
   }),
 );
+//default res
+app.get("/", (req, res) => {
+  res.send("Welcome, this is backend of my application!!");
+});
 
 //middleware
 app.use(express.json());
 
 // routes
-app.use("/api/auth", router);
+app.use("/api/auth", authRouter);
+app.use("/api/form", contactRouter);
+
+app.use(errorMiddleware);
 
 //db + server
 connectDb().then(() => {
