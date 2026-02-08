@@ -13,9 +13,9 @@ const HowItWorks = () => {
               For Clients
             </h3>
             <ul className="space-y-3 text-gray-300">
-              <li>1️⃣ Post your project requirement</li>
-              <li>2️⃣ Get matched with developers</li>
-              <li>3️⃣ Start your project</li>
+              <li>Post your project requirement</li>
+              <li>Get matched with developers</li>
+              <li>Start your project</li>
             </ul>
           </div>
 
@@ -25,9 +25,9 @@ const HowItWorks = () => {
               For Developers
             </h3>
             <ul className="space-y-3 text-gray-300">
-              <li>1️⃣ Create your developer profile</li>
-              <li>2️⃣ Receive project requests</li>
-              <li>3️⃣ Deliver work & earn</li>
+              <li>Create your developer profile</li>
+              <li>Receive project requests</li>
+              <li>Deliver work & earn</li>
             </ul>
           </div>
         </div>

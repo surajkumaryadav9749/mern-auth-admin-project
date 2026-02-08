@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./components/NavBar";
 import Footer from "./components/footer/Footer";
+import NotFound from "./pages/NotFound";
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,6 +20,9 @@ const App = () => {
         <Route path="/Service" element={<Service />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/*404 Page*/}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -5,8 +5,8 @@ const NavBar = () => {
   const navLinks = [
     { path: "/", label: "Home", end: true },
     { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
     { path: "/service", label: "Services" },
+    { path: "/contact", label: "Contact" },
     { path: "/login", label: "Login" },
     { path: "/register", label: "Register" },
   ];

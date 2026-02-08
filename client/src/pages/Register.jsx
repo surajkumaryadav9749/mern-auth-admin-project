@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 // import { useDispatch } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,12 +21,39 @@ const Register = () => {
     });
   };
 
-  //Submit function
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("FormData: ", formData);
-    setFormData({ username: "", email: "", password: "" });
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/register", // backend API
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      console.log("Response:", res.data);
+      alert("Registration Successful ✅");
+
+      setFormData({ username: "", email: "", password: "" });
+    } catch (error) {
+      console.log("Full error:", error);
+      console.log("Response data:", error.response?.data);
+      console.log("Status:", error.response?.status);
+
+      alert(error.response?.data?.message || "Registration Failed ❌");
+    }
   };
+
+  //Submit function
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("FormData: ", formData);
+  //   setFormData({ username: "", email: "", password: "" });
+  // };
   return (
     <section className="h-screen flex items-start pt-8 justify-center gap-4 bg-gray-900">
       <div className="register-img w-[40vw] h-[60vh] bg-green-400"></div>
@@ -48,7 +76,7 @@ const Register = () => {
               value={formData.username}
               onChange={handleChange}
               id="username"
-              className="w-[28vw] px-3 py-2 rounded outline-none bg-gray-700 border border-gray-700 "
+              className="w-[28vw] text-white px-3 py-2 rounded outline-none bg-gray-700 border border-gray-700 "
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -61,7 +89,7 @@ const Register = () => {
               value={formData.email}
               onChange={handleChange}
               id="email"
-              className="w-[28vw] px-3 py-2 rounded outline-none bg-gray-700 border border-gray-700 "
+              className="w-[28vw] px-3 py-2 text-white rounded outline-none bg-gray-700 border border-gray-700 "
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -77,7 +105,7 @@ const Register = () => {
               value={formData.password}
               onChange={handleChange}
               id="password"
-              className="w-[28vw] px-3 py-2 rounded outline-none bg-gray-700 border border-gray-700 "
+              className="w-[28vw] px-3 py-2 text-white rounded outline-none bg-gray-700 border border-gray-700 "
             />
           </div>
 
