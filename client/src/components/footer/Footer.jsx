@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <h2 className="text-white text-xl font-bold mb-3">DeveloperChauk</h2>
+          <h2 className="text-white text-xl font-bold mb-3">DevChauk</h2>
           <p className="text-sm">
             A service-based IT platform connecting clients with skilled
             developers for real-world projects.
@@ -47,7 +47,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm">
-        © {new Date().getFullYear()} DeveloperChauk. All rights reserved.
+        © {new Date().getFullYear()} DevChauk. All rights reserved.
       </div>
     </footer>
   );

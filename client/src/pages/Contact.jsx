@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,20 +8,37 @@ const Contact = () => {
     message: "",
   });
 
-  // handleChange
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // handleSubmit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Contact Data:", formData);
-    setFormData({ username: "", email: "", message: "" });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/form/contact",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      if (response.request.status == 201) {
+        setFormData({
+          username: "",
+          email: "",
+          message: "",
+        });
+      }
+      console.log(response);
+      console.log("Response Data: ", response.data);
+      alert("Message Sent Successfully ✅");
+    } catch (error) {
+      console.log("Error: ", error.response?.status);
+      alert(`Error Occured: ${error.response?.data}`);
+    }
   };
 
   return (

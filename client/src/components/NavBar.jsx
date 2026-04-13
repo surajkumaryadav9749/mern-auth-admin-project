@@ -17,7 +17,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="text-orange-500 text-xl font-semibold">
-            <NavLink to="/">DeveloperChauk</NavLink>
+            <NavLink to="/">DevChauk</NavLink>
           </div>
 
           {/* Navigation */}
